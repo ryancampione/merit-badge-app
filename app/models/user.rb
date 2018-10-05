@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Friendlyable
+ 
   # Include default devise modules. Others available are:
   # :timeoutable, :omniauthable
   devise :database_authenticatable, 
@@ -8,4 +10,5 @@ class User < ApplicationRecord
     :recoverable,
     :rememberable,
     :validatable
+    
 end

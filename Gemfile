@@ -17,8 +17,12 @@ gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'jquery-rails'
 
-#Use Devise for user authentication
+# Use Devise for user authentication
 gem 'devise'
+
+# Use Obfuscate_id to obfuscate table ids
+gem 'hashids'
+gem 'friendly_id', '~> 5.1.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
