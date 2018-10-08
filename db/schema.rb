@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_194029) do
+ActiveRecord::Schema.define(version: 2018_10_08_210539) do
+
+  create_table "roles", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "permission_create", default: "default", null: false
+    t.string "permission_view", default: "default", null: false
+    t.string "permission_update", default: "default", null: false
+    t.string "permission_delete", default: "restricted", null: false
+    t.string "permission_send_notifications", default: "restricted", null: false
+    t.boolean "default"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

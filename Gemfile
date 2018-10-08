@@ -6,8 +6,8 @@ ruby '2.4.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 
-# Use Puma as the app server
-gem 'puma', '~> 3.11'
+## Use Puma as the app server
+#gem 'puma', '~> 3.11'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -20,9 +20,13 @@ gem 'jquery-rails'
 # Use Devise for user authentication
 gem 'devise'
 
-# Use Obfuscate_id to obfuscate table ids
+# Use gems to obfuscate table ids
 gem 'hashids'
 gem 'friendly_id', '~> 5.1.0'
+
+# Use gems for pagination
+gem 'will_paginate', '~> 3.1.5'
+gem 'will_paginate-bootstrap'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
