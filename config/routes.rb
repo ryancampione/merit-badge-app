@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   
   # Admin role routes
   get 'admin', to: "home#admin"
-  resources :role
+  resources :roles
  
 end

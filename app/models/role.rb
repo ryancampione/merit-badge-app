@@ -1,7 +1,8 @@
 class Role < ApplicationRecord
   after_initialize :set_defaults
+  before_destroy :check_for_users
   
-  PERMISSION_LEVELS = %w(restricted default reviewer admin)
+  enum permission_levels: [:restricted, :default, :reviewer, :admin]
   
   validates :title, 
     presence: true, 
@@ -9,11 +10,41 @@ class Role < ApplicationRecord
     length: {minimum: 2, maximum: 100}
 
   validates :permission_create,
-    inclusion: {in: PERMISSION_LEVELS}
+    inclusion: {in: permission_levels.keys}
   
-  # Ensure only one role is list as default
-  def single_default
+  validates :permission_view,
+    inclusion: {in: permission_levels.keys}
+  
+  validates :permission_update,
+    inclusion: {in: permission_levels.keys}
     
+  validates :permission_delete,
+    inclusion: {in: permission_levels.keys}
+    
+  validates :permission_send_notifications,
+    inclusion: {in: permission_levels.keys}
+  
+  validate :single_default
+  validate :active_default
+  
+  # Ensure only one role is default
+  def single_default
+    if Role.where(default: true).where.not(id: self.id).count >= 1 and self.default
+      errors.add(:base, 'Only one role can be designated as default')
+    end
+  end
+  
+  # Ensure the default role is also active
+  def active_default
+    if self.default and !self.active
+      errors.add(:base, 'Inactive role cannot also be designated as default')
+    end
+  end
+  
+  # Check if the role is assigned to any users
+  def check_for_users
+    #ToDo
+    # if users.count > 0
   end
   
   def set_defaults

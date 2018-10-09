@@ -1,0 +1,101 @@
+<!-- notify the user of any errors -->
+<%= render 'shared/errors', obj: @role %>
+
+<!-- role form -->
+<div class="col-xs-10">
+    <%= form_for(@role, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+        <div class="form-group row">
+            <div class="control-label col-sm-2">
+                <%= f.label :title %>
+            </div>
+            <div class="col-sm-8">
+                <%= f.text_field :title, class: "form-control", placeholder: "Title of role", autofocus: true %>
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="control-label col-sm-2">
+                <%= f.label :description %>
+            </div>
+            <div class="col-sm-8">
+                <%= f.text_area :description, class: "form-control", rows: 3, placeholder: "Description of role" %>
+            </div>
+        </div>
+      
+        <div class="form-group row">
+          <div class="control-label col-sm-4">
+            <%= f.label :permission_create %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.select :permission_create, Role.permission_levels.keys, {}, class: "btn btn-default dropdown-toggle" %>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="control-label col-sm-4">
+            <%= f.label :permission_view %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.select :permission_view, Role.permission_levels.keys, {}, class: "btn btn-default dropdown-toggle" %>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="control-label col-sm-4">
+            <%= f.label :permission_update %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.select :permission_update, Role.permission_levels.keys, {}, class: "btn btn-default dropdown-toggle" %>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="control-label col-sm-4">
+            <%= f.label :permission_delete %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.select :permission_delete, Role.permission_levels.keys, {}, class: "btn btn-default dropdown-toggle" %>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="control-label col-sm-4">
+            <%= f.label :permission_send_notifications %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.select :permission_send_notifications, Role.permission_levels.keys, {}, class: "btn btn-default dropdown-toggle" %>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="control-label col-sm-4">
+            <%= f.label :default, "Default role" %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.check_box :default, :data => { :toggle => "toggle" } %>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="control-label col-sm-4">
+            <%= f.label :active, "Role status" %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.check_box :active, :data => { 
+              :toggle => "toggle",
+              :on => "Active",
+              :onstyle => "success",
+              :off => "Inactive",
+              :offstyle => "danger" 
+            } %>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-6 offset-2">
+                <%= f.submit class: "btn btn-primary btn-sm" %>
+                <%= link_to "Cancel", roles_path, class: "btn btn-default btn-sm" %>
+            </div>
+        </div>
+    <% end %>
+</div>
