@@ -22,9 +22,9 @@
                     </p>
                     <hr/>
                     <p>
-                        <%= link_to "Edit", edit_role_path(role), class: "btn btn-primary btn-sm" %>
+                        <%= link_to "Edit", edit_role_path(role), class: "btn btn-primary btn-sm" if current_user.role.permission_update == "admin" %>
                         &nbsp;
-                        <%= link_to "Delete", role_path(role),  method: :delete, data: {confirm: "Are you sure you want to delete this role?"}, class: "btn btn-danger btn-sm" %>   
+                        <%= link_to "Delete", role_path(role),  method: :delete, data: {confirm: "Are you sure you want to delete this role?"}, class: "btn btn-danger btn-sm" if current_user.role.permission_delete == "admin" %>
                     </p>
                 </div>
                 <div class="panel-footer">

@@ -1,3 +1,96 @@
+$navbar-default-bg: #4b38ff;
+
+.center {
+    text-align: center;
+}
+
+/* homepage */
+.jumbotron {
+    background-image: asset-url('beach_tent_city.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    max-height: 95%;
+}
+
+.jumbotron h1 {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.jumbotron p{
+    color: #fff;
+    text-align: center;
+}
+
+#sign-up {
+    position:relative; 
+    float:center;
+    vertical-align: center;
+    margin-top: 50px;
+}
+
+/* articles */
+.article-title {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.article-body {
+    
+}
+
+.article-meta-details {
+    margin-top: 10px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 5px;
+}
+
+.article-actions {
+    margin-top: 10px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 5px;
+}
+
+
+
+/* categories */
+.category-listing {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#category-badge a {
+    color: #fff !important;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    font-weight: bold;
+}
+
+#category-edit a {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+.input_checkbox input {
+    width: auto !important;
+}
+
+/* users */
+.user-listing {
+    padding-top: 10px;
+    list-style: none;
+    text-align: center;
+}
+
+.user-actions {
+    margin-top: 10px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 5px;
+}
+
 user-name {
   padding: 0 !important ;
   padding-left: 5px;
