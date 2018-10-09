@@ -1,4 +1,6 @@
 class Role < ApplicationRecord
+  has_many :user
+  
   after_initialize :set_defaults
   before_destroy :check_for_users
   
