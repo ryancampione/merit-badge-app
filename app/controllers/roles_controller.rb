@@ -21,6 +21,7 @@ class RolesController < ApplicationController
    # create a new role in the Role table
    def create
       @role = Role.new(role_params)
+      @role.updated_by = current_user.email
       
       if @role.save
          flash[:success] = "Role was successfully created"
@@ -37,6 +38,8 @@ class RolesController < ApplicationController
   
   # update a role
   def update
+    @role.updated_by = current_user.email
+    
     if @role.update(role_params)
        flash[:success] = "Role was successfully updated"
        redirect_to roles_path

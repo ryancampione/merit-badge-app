@@ -30,7 +30,7 @@
                 <div class="panel-footer">
                     <div class="row">
                         <div class="col-xs-8">
-                            <p><em>Last updated <%= time_ago_in_words(role.updated_at) %> ago by [User]</em></p>
+                            <p><em>Last updated <%= time_ago_in_words(role.updated_at) %> ago by <%= role.updated_by %></em></p>
                         </div>
                         <div class="col-xs-4"><span class="pull-right">
                             <!-- Default tags -->
