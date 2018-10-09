@@ -43,9 +43,13 @@ class RolesController < ApplicationController
   
   # delete a role
   def destroy
-    @role.destroy
+    
+    if @role.destroy
+      flash[:success] = "Role was successfully deleted"
+    else
+      flash[:danger] = "Role cannot be deleted"
+    end
       
-    flash[:success] = "Role was successfully deleted"
     redirect_to roles_path
   end
   

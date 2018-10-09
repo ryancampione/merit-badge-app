@@ -1,8 +1,10 @@
 class User < ApplicationRecord
-  belongs_to :role
-  
   include Friendlyable
- 
+  
+  belongs_to :role, optional: true
+  
+  after_initialize :set_default_role
+  
   # Include default devise modules. Others available are:
   # :timeoutable, :omniauthable
   devise :database_authenticatable, 
@@ -21,7 +23,10 @@ class User < ApplicationRecord
       length: {maximum: 105},
       format: {with: VALID_EMAIL_REGEX}
   
-  validates :role_id,
-      presence: true
-      
+  # Assign user default role
+  def set_default_role
+    if Role.where(default: true).count > 0
+      self.role ||= Role.where(default: true).first
+    end
+  end
 end

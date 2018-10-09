@@ -1,5 +1,5 @@
 class Role < ApplicationRecord
-  has_many :user
+  has_many :user, dependent: :restrict_with_error
   
   after_initialize :set_defaults
   before_destroy :check_for_users
@@ -45,8 +45,10 @@ class Role < ApplicationRecord
   
   # Check if the role is assigned to any users
   def check_for_users
-    #ToDo
-    # if users.count > 0
+    if self.user.count > 0
+      errors.add(:role, 'Cannot be delete while assigned to a user')
+      false
+    end
   end
   
   def set_defaults
