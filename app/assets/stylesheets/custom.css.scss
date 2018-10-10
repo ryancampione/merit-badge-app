@@ -31,7 +31,7 @@ $navbar-default-bg: #4b38ff;
     margin-top: 50px;
 }
 
-/* articles */
+/* merit badges */
 .article-title {
     font-weight: bold;
     font-size: 1.5em;
@@ -47,21 +47,8 @@ $navbar-default-bg: #4b38ff;
     padding-top: 5px;
 }
 
-.article-actions {
-    margin-top: 10px;
-    border-top: 1px solid #eaeaea;
-    padding-top: 5px;
-}
-
-
-
-/* categories */
-.category-listing {
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-#category-badge a {
+/* roles */
+#role-tag {
     color: #fff !important;
     text-decoration: none !important;
     text-transform: uppercase;
@@ -69,13 +56,10 @@ $navbar-default-bg: #4b38ff;
     font-weight: bold;
 }
 
-#category-edit a {
-    color: #fff !important;
-    text-decoration: none !important;
-}
-
-.input_checkbox input {
-    width: auto !important;
+.role-actions {
+    margin-top: 10px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 5px;
 }
 
 /* users */

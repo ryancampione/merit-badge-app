@@ -8,7 +8,13 @@
     <%= will_paginate @roles, renderer: BootstrapPagination::Rails %>
 </div>
 
-<%= render 'list', obj: @roles %>
+<% @roles.each do |role| %>
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <%= render partial: 'role', locals: { role: role} %>
+        </div>
+    </div>
+<% end %>
 
 <div class="pagination text-center">
     <%= will_paginate @roles, renderer: BootstrapPagination::Rails %>

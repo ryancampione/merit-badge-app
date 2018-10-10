@@ -1,0 +1,38 @@
+<h1 align="center">Merit Badges</h1>
+
+<div class="pagination text-center">
+    <%= will_paginate @merit_badges, renderer: BootstrapPagination::Rails %>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Merit Badge</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @merit_badges.each do |badge| %>
+            <tr>
+              <td><p class="<%= badge.eagle_required ? 'merit-badge-eagle' : 'merit-badge' %>"><%= badge.title %></p></td>
+              <td>
+                <%= link_to "View", merit_badge_path(badge), class: "btn btn-primary btn-sm" if current_user.role.permission_view.in?(['default', 'reviewer', 'admin']) %>
+                &nbsp;
+                <%= link_to "Edit", edit_merit_badge_path(badge), class: "btn btn-primary btn-sm" if current_user.role.permission_update.in?(['reviewer', 'admin']) %>
+                &nbsp;
+                <%= link_to "Delete", role_path(badge),  method: :delete, data: {confirm: "Are you sure you want to delete this role?"}, class: "btn btn-danger btn-sm" if current_user.role.permission_delete == "admin" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="pagination text-center">
+    <%= will_paginate @merit_badges, renderer: BootstrapPagination::Rails %>
+</div>

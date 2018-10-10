@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#index'
   
-  # Admin role routes
+  # Page routes
   get 'admin', to: "pages#admin"
+  get 'welcome', to: "pages#welcome"
+
+  # Standard controller routes
   resources :roles
- 
+  resources :merit_badges
 end
