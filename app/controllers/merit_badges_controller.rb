@@ -5,11 +5,11 @@ class MeritBadgesController < ApplicationController
   def index
     # display all merit badges to users with admin view
     if current_user.role.permission_view == 'admin' then
-      @merit_badges = MeritBadge.order(:title).paginate(page: params[:page], per_page: 25)
+      @merit_badges = MeritBadge.order(:title).paginate(page: params[:page], per_page: 5)
     
     # display only active merit badges
     else
-      @merit_badges = MeritBadge.where(active: true).order(:title).paginate(page: params[:page], per_page: 25)
+      @merit_badges = MeritBadge.where(active: true).order(:title).paginate(page: params[:page], per_page: 5)
     end
   end
   

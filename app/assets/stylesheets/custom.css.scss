@@ -32,19 +32,24 @@ $navbar-default-bg: #4b38ff;
 }
 
 /* merit badges */
-.article-title {
-    font-weight: bold;
-    font-size: 1.5em;
-}
-
-.article-body {
-    
-}
-
-.article-meta-details {
-    margin-top: 10px;
-    border-top: 1px solid #eaeaea;
+.merit-badge {
+    margin-top: 0spx;
     padding-top: 5px;
+    padding-left: 5px;
+    font-size: 1.05em;
+}
+
+.merit-badge-eagle {
+    font-weight: bold;
+}
+
+.merit-badge-inactive {
+    text-decoration: line-through;
+}
+
+.badge-actions {
+  margin-top: 0px;
+  padding: 5px 20px 0px 5px;
 }
 
 /* roles */

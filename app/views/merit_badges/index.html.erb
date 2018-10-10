@@ -1,6 +1,6 @@
 <h1 align="center">Merit Badges</h1>
 
-<div class="pagination text-center">
+<div class="text-center">
     <%= will_paginate @merit_badges, renderer: BootstrapPagination::Rails %>
 </div>
 
@@ -10,21 +10,23 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Merit Badge</th>
-            <th>Action</th>
+            <th class="center">Merit Badge</th>
+            <th class="center">Action</th>
           </tr>
         </thead>
         <tbody>
           <% @merit_badges.each do |badge| %>
             <tr>
-              <td><p class="<%= badge.eagle_required ? 'merit-badge-eagle' : 'merit-badge' %>"><%= badge.title %></p></td>
-              <td>
-                <%= link_to "View", merit_badge_path(badge), class: "btn btn-primary btn-sm" if current_user.role.permission_view.in?(['default', 'reviewer', 'admin']) %>
+              <td><p class="merit-badge 
+                <%= ' merit-badge-eagle' if badge.eagle_required %><%= 'merit-badge-inactive' if !badge.active %>">
+                <%= badge.title %></p></td>
+              <td><div class="badge-actions text-right">
+                <%= link_to "View", merit_badge_path(badge), class: "btn btn-primary btn-xs" if current_user.role.permission_view.in?(['default', 'reviewer', 'admin']) %>
                 &nbsp;
-                <%= link_to "Edit", edit_merit_badge_path(badge), class: "btn btn-primary btn-sm" if current_user.role.permission_update.in?(['reviewer', 'admin']) %>
+                <%= link_to "Edit", edit_merit_badge_path(badge), class: "btn btn-warning btn-xs" if current_user.role.permission_update.in?(['reviewer', 'admin']) %>
                 &nbsp;
-                <%= link_to "Delete", role_path(badge),  method: :delete, data: {confirm: "Are you sure you want to delete this role?"}, class: "btn btn-danger btn-sm" if current_user.role.permission_delete == "admin" %>
-              </td>
+                <%= link_to "Delete", role_path(badge),  method: :delete, data: {confirm: "Are you sure you want to delete this role?"}, class: "btn btn-danger btn-xs" if current_user.role.permission_delete == "admin" %>
+              </div></td>
             </tr>
           <% end %>
         </tbody>
@@ -33,6 +35,6 @@
   </div>
 </div>
 
-<div class="pagination text-center">
+<div class="text-center">
     <%= will_paginate @merit_badges, renderer: BootstrapPagination::Rails %>
 </div>
