@@ -9,7 +9,7 @@ class MeritBadgesController < ApplicationController
     
     # display only active merit badges
     else
-      @merit_badges = MeritBadge.where(active: true).order(:title).paginate(page: params[:page], per_page: 5)
+     @merit_badges = MeritBadge.where(active: true).order(:title).paginate(page: params[:page], per_page: 5)
     end
   end
   
