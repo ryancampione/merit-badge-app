@@ -1,8 +1,8 @@
 class RolesController < ApplicationController
-  
+ 
+  before_action :require_active_role
   # run the set_role method first for these methods
   before_action :set_role, only: [:edit, :update, :show, :destroy]
-  before_action :require_active_role
   before_action :require_admin_create_permission, only: [:new, :create]
   before_action :require_admin_view_permission
   before_action :require_admin_update_permission, only: [:edit, :update]

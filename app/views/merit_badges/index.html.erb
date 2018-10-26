@@ -17,9 +17,10 @@
         <tbody>
           <% @merit_badges.each do |badge| %>
             <tr>
-              <td><p class="merit-badge 
-                <%= ' merit-badge-eagle' if badge.eagle_required %> <%= 'merit-badge-inactive' if !badge.active %>">
-                <%= badge.title %></p></td>
+              <td><p class="merit-badge <%= ' merit-badge-eagle' if badge.eagle_required %>">
+                  <%= badge.title %>
+                  <% if !badge.active %> &nbsp;&nbsp;<span class="label label-danger">Discontinued</span><% end %>
+                </p></td>
               <td><div class="badge-actions text-right">
                 <%= link_to "View", merit_badge_path(badge), class: "btn btn-primary btn-xs" if current_user.role.permission_view.in?(['default', 'reviewer', 'admin']) %>
                 &nbsp;

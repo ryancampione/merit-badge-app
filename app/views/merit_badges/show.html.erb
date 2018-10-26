@@ -1,13 +1,13 @@
 <div class="row">
   <h2 align="center"><%= @merit_badge.title %></h2>
   <div class="merit-badge-icon center">
-    <% if !@merit_badge.img_url.nil? %>
+    <% if !@merit_badge.img_url.blank? %>
       <img src="<%= sanitize  @merit_badge.img_url %>" alt="<%= @merit_badge.title %> icon" width="100px" height="100px" />
-    <% end %>  
+    <% end %>
   </div>
   <p align="center">
     <% if @merit_badge.eagle_required %><span class="label label-default">Eagle Required</span><% end %>
-    <% if !@merit_badge.active %><span class="label label-danger">Merit Badge Discontinued</span><% end %>
+    <% if !@merit_badge.active %><span class="label label-danger">Discontinued</span><% end %>
   </p>
 </div>
 <% if !@merit_badge.special_counselor_requirements.blank? %>

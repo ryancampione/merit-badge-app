@@ -1,5 +1,8 @@
 class MeritBadgesController < ApplicationController
+
+  before_action :require_active_role
   before_action :set_merit_badge, only: [:edit, :update, :show, :destroy]
+  before_action :require_admin_create_permission, only: [:new, :create]
   before_action :require_admin_update_permission, only: [:edit, :update]
   before_action :require_admin_delete_permission, only: [:destroy]
   
@@ -7,11 +10,11 @@ class MeritBadgesController < ApplicationController
   def index
     # display all merit badges to users with admin view
     if current_user.role.permission_view == 'admin' then
-      @merit_badges = MeritBadge.order(:title).paginate(page: params[:page], per_page: 5)
+      @merit_badges = MeritBadge.order(:title).paginate(page: params[:page], per_page: 10)
     
     # display only active merit badges
     else
-     @merit_badges = MeritBadge.where(active: true).order(:title).paginate(page: params[:page], per_page: 5)
+     @merit_badges = MeritBadge.where(active: true).order(:title).paginate(page: params[:page], per_page: 10)
     end
   end
   
@@ -22,6 +25,7 @@ class MeritBadgesController < ApplicationController
   # new merit badge view
   def new
     @merit_badge = MeritBadge.new
+    @merit_badge.active = true
   end
    
   # create a new merit badge
@@ -31,7 +35,7 @@ class MeritBadgesController < ApplicationController
     
     if @merit_badge.save
        flash[:success] = "The #{@merit_badge.title} merit badge was successfully created."
-       redirect_to merit_badges_path
+       redirect_to merit_badge_path(@merit_badge)
     else
        render 'new'
     end
@@ -54,8 +58,15 @@ class MeritBadgesController < ApplicationController
     end
   end
   
+  # delete merit badge
   def destroy
-    
+    if @merit_badge.destroy
+      flash[:success] = "Merit badge was successfully deleted."
+    else
+      flash[:danger] = "Merit badge could not be deleted."
+    end
+      
+    redirect_to merit_badges_path
   end
   
   private
