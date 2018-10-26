@@ -1,5 +1,7 @@
 class MeritBadgesController < ApplicationController
     before_action :set_merit_badge, only: [:edit, :update, :show, :destroy]
+    before_action :require_admin_update_permission, only: [:edit, :update]
+    before_action :require_admin_delete_permission, only: [:destroy]
   
   # display all merit badges
   def index
@@ -32,6 +34,23 @@ class MeritBadgesController < ApplicationController
        redirect_to merit_badges_path
     else
        render 'new'
+    end
+  end
+  
+  # display edit merit badge view
+  def edit
+    
+  end
+  
+  # update a merit badge
+  def update
+    @merit_badge.updated_by = current_user.email
+    
+    if @merit_badge.update(merit_badge_params)
+       flash[:success] = "#{@merit_badge.title} merit badge was successfully updated."
+       redirect_to merit_badges_path
+    else
+       render 'edit'
     end
   end
   

@@ -1,0 +1,71 @@
+<!-- notify the user of any errors -->
+<%= render 'shared/errors', obj: @merit_badge %>
+
+<!-- role form -->
+<div class="col-xs-10 col-xs-offset-1">
+    <%= form_for(@merit_badge, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+        <div class="form-group row">
+            <div class="control-label col-sm-2">
+                <%= f.label :title %>
+            </div>
+            <div class="col-sm-8">
+                <%= f.text_field :title, class: "form-control", placeholder: "Title of Merit Badge", autofocus: true %>
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="control-label col-sm-2">
+                <%= f.label :img_url, "Image URL" %>
+            </div>
+            <div class="col-sm-8">
+                <%= f.text_area :img_url, class: "form-control", rows: 1, placeholder: "https://" %>
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="control-label col-sm-2">
+                <%= f.label :special_counselor_requirements, "Special Counselor Requirements" %>
+            </div>
+            <div class="col-sm-8">
+                <%= f.text_area :special_counselor_requirements, class: "form-control", rows: 3, placeholder: "Description of requirements" %>
+            </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label :eagle_required, "Eagle Required?" %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.check_box :eagle_required, :data => { 
+              :toggle => "toggle",
+              :on => "Yes",
+              :onstyle => "primary",
+              :off => "No",
+              :offstyle => "default" 
+            } %>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label :active, "Merit Badge Status" %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.check_box :active, :data => { 
+              :toggle => "toggle",
+              :on => "Active",
+              :onstyle => "success",
+              :off => "Inactive",
+              :offstyle => "danger" 
+            } %>
+          </div>
+        </div>
+        <br />
+        <div class="form-group row">
+            <div class="col-md-4 col-md-offset-8">
+                <%= f.submit class: "btn btn-primary btn-md" %>
+                <%= link_to "Cancel", merit_badge_path(@merit_badge), class: "btn btn-default btn-md" %>
+            </div>
+        </div>
+    <% end %>
+</div>

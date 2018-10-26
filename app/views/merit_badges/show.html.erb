@@ -10,7 +10,7 @@
     <% if !@merit_badge.active %><span class="label label-danger">Merit Badge Discontinued</span><% end %>
   </p>
 </div>
-<% if !@merit_badge.special_counselor_requirements.nil? %>
+<% if !@merit_badge.special_counselor_requirements.blank? %>
   <br />
   <div class="row">
     <div class="col col-lg-8 col-md-offset-2">
