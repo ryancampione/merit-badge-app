@@ -1,7 +1,7 @@
 class MeritBadgesController < ApplicationController
-    before_action :set_merit_badge, only: [:edit, :update, :show, :destroy]
-    before_action :require_admin_update_permission, only: [:edit, :update]
-    before_action :require_admin_delete_permission, only: [:destroy]
+  before_action :set_merit_badge, only: [:edit, :update, :show, :destroy]
+  before_action :require_admin_update_permission, only: [:edit, :update]
+  before_action :require_admin_delete_permission, only: [:destroy]
   
   # display all merit badges
   def index
@@ -19,18 +19,18 @@ class MeritBadgesController < ApplicationController
     
   end
   
-   # new merit badge view
-   def new
-      @merit_badge = MeritBadge.new
-   end
+  # new merit badge view
+  def new
+    @merit_badge = MeritBadge.new
+  end
    
-   # create a new merit badge
-   def create
+  # create a new merit badge
+  def create
     @merit_badge = MeritBadge.new(merit_badge_params)
     @merit_badge.updated_by = current_user.email
     
     if @merit_badge.save
-       flash[:success] = "Merit badge #{@merit_badge.title} was successfully created"
+       flash[:success] = "The #{@merit_badge.title} merit badge was successfully created."
        redirect_to merit_badges_path
     else
        render 'new'
@@ -47,8 +47,8 @@ class MeritBadgesController < ApplicationController
     @merit_badge.updated_by = current_user.email
     
     if @merit_badge.update(merit_badge_params)
-       flash[:success] = "#{@merit_badge.title} merit badge was successfully updated."
-       redirect_to merit_badges_path
+       flash[:success] = "The #{@merit_badge.title} merit badge was successfully updated."
+       redirect_to merit_badge_path(@merit_badge)
     else
        render 'edit'
     end
@@ -63,8 +63,9 @@ class MeritBadgesController < ApplicationController
     def merit_badge_params
       params.require(:merit_badge).permit(
         :title, 
-        :eagle_required,
         :special_counselor_requirements,
+        :img_url,
+        :eagle_required,
         :active
       )
     end

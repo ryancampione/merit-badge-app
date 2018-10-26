@@ -2,7 +2,7 @@
   <h2 align="center"><%= @merit_badge.title %></h2>
   <div class="merit-badge-icon center">
     <% if !@merit_badge.img_url.nil? %>
-      <img src="<%= @merit_badge.img_url %>" alt="<%= @merit_badge.title %> icon" width="100px" height="100px" />
+      <img src="<%= sanitize  @merit_badge.img_url %>" alt="<%= @merit_badge.title %> icon" width="100px" height="100px" />
     <% end %>  
   </div>
   <p align="center">
