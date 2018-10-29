@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :unit_types
   resources :counselors
   devise_for :users
   root 'pages#index'

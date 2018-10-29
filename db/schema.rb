@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_211444) do
+ActiveRecord::Schema.define(version: 2018_10_29_211058) do
 
   create_table "counselors", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2018_10_26_211444) do
     t.string "updated_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "unit_type_id"
+    t.index ["unit_type_id"], name: "index_counselors_on_unit_type_id"
   end
 
   create_table "merit_badges", force: :cascade do |t|
@@ -50,6 +52,15 @@ ActiveRecord::Schema.define(version: 2018_10_26_211444) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "updated_by"
+  end
+
+  create_table "unit_types", force: :cascade do |t|
+    t.string "value", null: false
+    t.boolean "active", default: true, null: false
+    t.integer "order", default: 0, null: false
+    t.string "updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

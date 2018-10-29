@@ -29,5 +29,9 @@ class Counselor < ApplicationRecord
   before_save {
     self.name = name.strip
     self.email = email.downcase
-  }  
+  } 
+  
+  def unit 
+    UnitType.find(unit_type_id).value + " " + unit_number
+  end
 end

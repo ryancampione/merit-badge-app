@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @unit_type.value %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @unit_type.active %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @unit_type.order %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @unit_type.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_unit_type_path(@unit_type) %> |
+<%= link_to 'Back', unit_types_path %>
