@@ -6,11 +6,15 @@ $navbar-default-bg: #4b38ff;
 
 /* navigation bar */
 nav {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
     margin-bottom: 20px;
     background: #4b38ff;
 }
 
 #logo {
+    margin-top: 10px;
     padding-top: 10px;
     padding-right: 5px;
     float: left;
@@ -160,6 +164,7 @@ user-name {
 
 .logout {
   padding-left: 0;
+  text-align: right;
 }
 
 .nav.navbar-right {
