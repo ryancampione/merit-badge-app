@@ -1,6 +1,5 @@
 class MeritBadgesController < ApplicationController
 
-  before_action :require_active_role
   before_action :set_merit_badge, only: [:edit, :update, :show, :destroy]
   before_action :require_admin_create_permission, only: [:new, :create]
   before_action :require_admin_update_permission, only: [:edit, :update]

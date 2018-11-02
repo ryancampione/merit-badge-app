@@ -14,7 +14,6 @@ class CounselorsController < ApplicationController
   end
 
   # GET /counselors/1
-  # GET /counselors/1.json
   def show
   
   end

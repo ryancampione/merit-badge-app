@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  #before_action :require_active_role
   
   def require_active_role
     if !current_user.role.active

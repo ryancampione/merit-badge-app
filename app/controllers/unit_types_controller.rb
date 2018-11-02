@@ -1,5 +1,9 @@
 class UnitTypesController < ApplicationController
   before_action :set_unit_type, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin_create_permission, only: [:new, :create]
+  before_action :require_admin_view_permission
+  before_action :require_admin_update_permission, only: [:edit, :update]
+  before_action :require_admin_delete_permission, only: [:destroy]
 
   # GET /unit_types
   # GET /unit_types.json
