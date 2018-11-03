@@ -48,8 +48,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Security Patch
-gem 'bundler', '>= 1.16.2'
-#gem 'loofah', '~> 2.2.3'
+gem 'loofah', '~> 2.2.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -77,6 +76,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'bundler', '>= 1.16.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
