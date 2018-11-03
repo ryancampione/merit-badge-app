@@ -48,7 +48,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Security Patch
-gem 'loofah', '~> 2.2.3'
+gem 'bundler', '>= 1.16.2'
+#gem 'loofah', '~> 2.2.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
